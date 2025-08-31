@@ -201,7 +201,7 @@ class SettingDialog(context: Context) : AlertDialog.Builder(context),
                         TelegramHandler.settings.customEmojiMapping
 
                     "customEmojiMappingConfig" -> preference.summary =
-                        "加载了${CustomEmojiMapping.emotionMap.map.size}条映射规则"
+                        "Đã tải ${CustomEmojiMapping.emotionMap.map.size} quy tắc ánh xạ"
 
                     "customMapPosition" -> (preference as SwitchPreference).isChecked =
                         TelegramHandler.settings.customMapPosition
@@ -388,140 +388,142 @@ class SettingDialog(context: Context) : AlertDialog.Builder(context),
         listView = ListView(context)
 
         prefScreen.run {
-            switchPreference("总开关", "enabled") {
+            switchPreference("Công tắc chính", "enabled") {
                 setDefaultValue(true)
             }
 
-            category("更改默认行为") {
+            category("Thay đổi hành vi mặc định") {
                 switchPreference(
-                    "自动勾选删除",
+                    "Tự động chọn xóa cho cả hai bên",
                     "autoCheckDeleteMessageOption",
-                    "在私聊中删除消息时自动勾选为对方删除消息"
+                    "Khi xóa tin nhắn trong trò chuyện riêng, tự động chọn tùy chọn xóa cho cả đối phương"
                 )
                 switchPreference(
-                    "自动取消分享手机号",
+                    "Tự động hủy chia sẻ số điện thoại",
                     "autoUncheckSharePhoneNumber",
-                    "添加联系人自动取消勾选分享手机号"
+                    "Khi thêm liên hệ, tự động bỏ chọn mục chia sẻ số điện thoại của bạn"
                 )
                 switchPreference(
-                    "头像列表默认当前头像",
+                    "Danh sách ảnh đại diện mặc định là ảnh hiện tại",
                     "avatarPageScrollToCurrent",
-                    "个人资料头像如果存在多个且当前头像非第一个时，下拉展示完整头像列表时自动切到当前头像（原行为是总是切到第一个）"
+                    "Nếu có nhiều ảnh đại diện và ảnh hiện tại không phải là ảnh đầu tiên, khi kéo xuống để xem danh sách ảnh đầy đủ, sẽ tự động chuyển đến ảnh đại diện hiện tại (hành vi gốc là luôn chuyển đến ảnh đầu tiên)"
                 )
                 switchPreference(
-                    "hashtag 总是搜索本频道",
+                    "Hashtag luôn tìm trong kênh hiện tại",
                     "defaultSearchTab",
                 )
                 switchPreference(
-                    "默认发送高清晰度图像",
+                    "Mặc định gửi ảnh chất lượng cao",
                     "sendImageWithHighQualityByDefault",
-                    "需要 11.12.0 (5997) 或更高版本，并移除图片预览左下角的高清标志"
+                    "Yêu cầu phiên bản 11.12.0 (5997) trở lên, đồng thời xóa biểu tượng HD ở góc dưới bên trái của xem trước ảnh"
                 )
                 switchPreference(
-                    "总是允许保存动态图片",
+                    "Luôn cho phép lưu tin story",
                     "alwaysShowStorySaveIcon"
                 )
                 switchPreference(
-                    "总是显示下载管理器",
+                    "Luôn hiển thị trình quản lý tải xuống",
                     "alwaysShowDownloadManager"
                 )
             }
 
-            category("隐私") {
+            category("Quyền riêng tư") {
                 switchPreference(
-                    "默认隐藏电话号码",
+                    "Mặc định ẩn số điện thoại",
                     "hidePhoneNumber",
-                    "隐藏主页抽屉的电话号码，点按文本切换显示状态；隐藏资料页面的电话号码，点按右侧按钮切换显示状态"
+                    "Ẩn số điện thoại trong menu chính, nhấn vào để hiện/ẩn; ẩn số điện thoại trên trang cá nhân, nhấn nút bên phải để hiện/ẩn"
                 )
                 switchPreference(
-                    "默认只隐藏自己的隐藏电话号码",
+                    "Chỉ ẩn số điện thoại của chính mình",
                     "hidePhoneNumberForSelfOnly",
-                    "其他人的电话号码默认显示（如有），也可隐藏，需启用「默认隐藏电话号码」"
+                    "Số điện thoại của người khác sẽ mặc định hiển thị (nếu có), cũng có thể ẩn đi, cần bật 'Mặc định ẩn số điện thoại' trước"
                 )
             }
 
-            category("忽略权限") {
+            category("Bỏ qua quyền") {
                 switchPreference(
-                    "忽略联系人权限",
+                    "Bỏ qua quyền truy cập danh bạ",
                     "contactPermission",
-                    "打开联系人页面不再请求联系人权限"
+                    "Mở trang danh bạ sẽ không yêu cầu quyền truy cập danh bạ nữa"
                 )
                 switchPreference(
-                    "打开 apk 无需请求权限",
+                    "Mở file APK không cần xin quyền",
                     "fakeInstallPermission",
-                    "打开 apk 时不检查是否有 REQUEST_INSTALL_PACKAGE 权限，这并不会实际给予权限"
+                    "Khi mở file APK sẽ không kiểm tra quyền REQUEST_INSTALL_PACKAGE, điều này không thực sự cấp quyền"
                 )
                 switchPreference(
-                    "无需谷歌地图",
+                    "Không cần Google Maps",
                     "noGoogleMaps",
-                    "不再提示安装谷歌地图"
+                    "Không còn hiển thị thông báo yêu cầu cài đặt Google Maps"
                 )
             }
 
-            category("Emoji 和 Sticker") {
+
+
+            category("Emoji và Sticker") {
                 switchPreference(
-                    "自定义 emoji 映射",
+                    "Ánh xạ emoji tùy chỉnh",
                     "customEmojiMapping",
                 )
                 preference(
-                    "自定义 emoji 映射配置",
+                    "Cấu hình ánh xạ emoji tùy chỉnh",
                     "customEmojiMappingConfig",
                 )
                 switchPreference(
-                    "查看 Emoji 和 Sticker Pack 创建者",
+                    "Xem người tạo Gói Emoji và Sticker",
                     "emojiStickerMenu",
-                    "在 Emoji 和 Sticker Pack 列表对话框的菜单增加查看创建者"
+                    "Thêm tùy chọn xem người tạo trong menu của hộp thoại danh sách Gói Emoji và Sticker"
                 )
             }
 
-            category("链接优化") {
+            category("Tối ưu hóa liên kết") {
                 switchPreference(
-                    "阻止重复打开链接",
+                    "Chặn mở liên kết trùng lặp",
                     "fixHasAppToOpen",
                 )
                 switchPreference(
-                    "修复链接的意外字符",
+                    "Sửa các ký tự không mong muốn trong liên kết",
                     "openLinkDialog",
-                    "如果打开的链接包含意外字符（比如可能链接和后面的文字无空格），则总是弹出对话框，并可以点击fix按钮打开去除这些意外字符的链接"
+                    "Nếu liên kết được mở chứa các ký tự không mong muốn (ví dụ: liên kết và văn bản phía sau không có khoảng trắng), sẽ luôn hiển thị một hộp thoại và có thể nhấp vào nút 'Sửa' để mở liên kết đã loại bỏ các ký tự đó"
                 )
                 switchPreference(
-                    "打开 tg 用户链接",
+                    "Mở liên kết người dùng Telegram",
                     "openTgUserLink",
-                    "将 tg://user?id=xxx 转换成 tg://openmessage?user_id=xxx 并打开"
+                    "Chuyển đổi tg://user?id=xxx thành tg://openmessage?user_id=xxx và mở nó"
                 )
                 switchPreference(
-                    "在私聊中复制消息链接",
+                    "Sao chép liên kết tin nhắn trong trò chuyện riêng",
                     "copyPrivateChatLink",
-                    "链接仅对自己有效，tg://openmessage?user_id=xxx&message_id=yyy"
+                    "Liên kết chỉ có hiệu lực với chính bạn, định dạng tg://openmessage?user_id=xxx&message_id=yyy"
                 )
             }
 
-            category("其他") {
+            category("Khác") {
                 switchPreference(
-                    "消息编辑框禁用语音或相机按钮",
+                    "Tắt nút ghi âm hoặc camera trong ô nhập liệu",
                     "disableVoiceOrCameraButton",
                 )
                 switchPreference(
-                    "地图自定义经纬度",
+                    "Tùy chỉnh kinh độ và vĩ độ trên bản đồ",
                     "customMapPosition",
-                    "长按定位按钮打开对话框"
+                    "Nhấn giữ nút định vị để mở hộp thoại"
                 )
                 switchPreference(
-                    "at 列表长按使用无用户名 at",
+                    "Nhấn giữ để nhắc đến không có tên người dùng",
                     "longClickMention",
-                    "at 列表中，长按某人以使用无用户名的方式 at 此人"
+                    "Trong danh sách nhắc đến (@), nhấn giữ vào một người để nhắc đến họ mà không kèm theo tên người dùng"
                 )
                 switchPreference(
-                    "标记双向联系人",
+                    "Đánh dấu liên hệ hai chiều",
                     "mutualContact",
-                    "在联系人列表标记你的双向联系人（↑↓）"
+                    "Đánh dấu các liên hệ hai chiều của bạn (↑↓) trong danh sách liên hệ"
                 )
                 switchPreference(
-                    "移除下拉归档",
+                    "Xóa mục 'Lưu trữ' khi kéo xuống",
                     "removeArchiveFolder"
                 )
                 switchPreference(
-                    "移除主页浮动按钮",
+                    "Xóa nút nổi trên trang chủ",
                     "hideFloatFab"
                 )
             }
@@ -576,9 +578,9 @@ class SettingDialog(context: Context) : AlertDialog.Builder(context),
                 SettingDialog(themedContext).show()
             } catch (_: Resources.NotFoundException) {
                 AlertDialog.Builder(themedContext)
-                    .setTitle("需要重启")
-                    .setMessage("由于加载资源失败，需要重启应用以显示设置界面。")
-                    .setPositiveButton("重启") { _, _ ->
+                    .setTitle("Cần khởi động lại")
+                    .setMessage("Do không tải được tài nguyên, bạn cần khởi động lại ứng dụng để hiển thị giao diện cài đặt.")
+                    .setPositiveButton("Khởi động lại") { _, _ ->
                         restartApplication(context.findBaseActivity())
                     }.show()
             }
@@ -591,8 +593,8 @@ class SettingDialog(context: Context) : AlertDialog.Builder(context),
 
         setView(getContentView())
         setTitle("MyInjector")
-        setNegativeButton("返回", null)
-        setPositiveButton("重启") { _, _ ->
+        setNegativeButton("Quay lại", null)
+        setPositiveButton("Khởi động lại") { _, _ ->
             restartApplication(activity)
         }
     }
